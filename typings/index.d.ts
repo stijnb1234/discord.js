@@ -301,7 +301,7 @@ declare module 'discord.js' {
     public static resolve(bit?: BitFieldResolvable<any, number | bigint>): number | bigint;
   }
 
-  export class ButtonInteraction extends Interaction {
+  export class ComponentInteraction extends Interaction {
     public customID: string;
     public deferred: boolean;
     public message: Message | RawMessage;
@@ -1133,7 +1133,7 @@ declare module 'discord.js' {
     public user: User;
     public version: number;
     public isCommand(): this is CommandInteraction;
-    public isButton(): this is ButtonInteraction;
+    public isComponent(): this is ComponentInteraction;
   }
 
   export class Invite extends Base {
