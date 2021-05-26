@@ -275,7 +275,7 @@ declare module 'discord.js' {
   }
 
   interface BaseMessageComponentOptions {
-    type?: MessageComponentType;
+    type?: MessageComponentType | MessageComponentTypes;
   }
 
   class BroadcastDispatcher extends VolumeMixin(StreamDispatcher) {
@@ -1282,7 +1282,7 @@ declare module 'discord.js' {
     public setDisabled(disabled: boolean): this;
     public setEmoji(emoji: EmojiIdentifierResolvable): this;
     public setLabel(label: string): this;
-    public setStyle(style: MessageButtonStyle | number): this;
+    public setStyle(style: MessageButtonStyle | MessageButtonStyles): this;
     public setURL(url: string): this;
   }
 
@@ -3226,7 +3226,7 @@ declare module 'discord.js' {
   type MessageAdditions = MessageEmbed | MessageAttachment | (MessageEmbed | MessageAttachment)[];
 
   interface MessageActionRowOptions extends BaseMessageComponentOptions {
-    type: 'ACTION_ROW';
+    type: 'ACTION_ROW' | MessageComponentTypes.ACTION_ROW;
     components?: MessageComponentResolvable[];
   }
 
@@ -3240,7 +3240,7 @@ declare module 'discord.js' {
     disabled?: boolean;
     emoji?: RawEmoji;
     label?: string;
-    style?: MessageButtonStyle;
+    style?: MessageButtonStyle | MessageButtonStyles;
     url?: string;
   }
 
@@ -3266,7 +3266,7 @@ declare module 'discord.js' {
     flags?: BitFieldResolvable<MessageFlagsString, number>;
     allowedMentions?: MessageMentionOptions;
     attachments?: MessageAttachment[];
-    components?: BaseMessageComponent[];
+    components?: MessageComponentResolvable[];
   }
 
   interface MessageEmbedAuthor {
