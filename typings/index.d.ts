@@ -271,7 +271,10 @@ declare module 'discord.js' {
   export class BaseMessageComponent {
     constructor(data?: BaseMessageComponent | BaseMessageComponentOptions);
     public type: MessageComponentType | null;
-    public setType(type: MessageComponentType | number): this;
+    public setType(type: MessageComponentTypeResolvable): this;
+    private static create(data: MessageComponentOptions): MessageComponent;
+    private static resolveType(type: MessageComponentTypeResolvable): MessageComponentType;
+    private static transform(component: MessageComponentResolvable): object;
   }
 
   interface BaseMessageComponentOptions {
@@ -1284,8 +1287,9 @@ declare module 'discord.js' {
     public setDisabled(disabled: boolean): this;
     public setEmoji(emoji: EmojiIdentifierResolvable): this;
     public setLabel(label: string): this;
-    public setStyle(style: MessageButtonStyle | MessageButtonStyles): this;
+    public setStyle(style: MessageButtonStyleResolvable): this;
     public setURL(url: string): this;
+    private static resolveStyle(style: MessageButtonStyleResolvable): MessageButtonStyle;
   }
 
   export class MessageCollector extends Collector<Snowflake, Message> {
@@ -3242,11 +3246,14 @@ declare module 'discord.js' {
     disabled?: boolean;
     emoji?: RawEmoji;
     label?: string;
-    style?: MessageButtonStyle | MessageButtonStyles;
+    style: MessageButtonStyleResolvable;
+    type: 'BUTTON' | MessageComponentTypes.BUTTON;
     url?: string;
   }
 
   type MessageButtonStyle = keyof typeof MessageButtonStyles;
+
+  type MessageButtonStyleResolvable = MessageButtonStyle | MessageButtonStyles | string | number;
 
   interface MessageCollectorOptions extends CollectorOptions {
     max?: number;
@@ -3260,6 +3267,8 @@ declare module 'discord.js' {
   type MessageComponentResolvable = MessageComponent | MessageComponentOptions;
 
   type MessageComponentType = keyof typeof MessageComponentTypes;
+
+  type MessageComponentTypeResolvable = MessageComponentType | MessageComponentTypes | string | number;
 
   interface MessageEditOptions {
     content?: StringResolvable;
