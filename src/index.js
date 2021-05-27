@@ -70,6 +70,7 @@ module.exports = {
   BaseMessageComponent: require('./structures/BaseMessageComponent'),
   CategoryChannel: require('./structures/CategoryChannel'),
   Channel: require('./structures/Channel'),
+  ChannelComponentInteractionCollector: require('./structures/ChannelComponentInteractionCollector'),
   ClientApplication: require('./structures/ClientApplication'),
   get ClientUser() {
     // This is a getter so that it properly extends any custom User class
@@ -78,7 +79,6 @@ module.exports = {
   Collector: require('./structures/interfaces/Collector'),
   CommandInteraction: require('./structures/CommandInteraction'),
   ComponentInteraction: require('./structures/ComponentInteraction'),
-  ComponentInteractionCollector: require('./structures/ComponentInteractionCollector'),
   DMChannel: require('./structures/DMChannel'),
   Emoji: require('./structures/Emoji'),
   Guild: require('./structures/Guild'),
@@ -98,6 +98,7 @@ module.exports = {
   MessageAttachment: require('./structures/MessageAttachment'),
   MessageButton: require('./structures/MessageButton'),
   MessageCollector: require('./structures/MessageCollector'),
+  MessageComponentInteractionCollector: require('./structures/MessageComponentInteractionCollector'),
   MessageEmbed: require('./structures/MessageEmbed'),
   MessageMentions: require('./structures/MessageMentions'),
   MessageReaction: require('./structures/MessageReaction'),
