@@ -1237,7 +1237,7 @@ declare module 'discord.js' {
     public awaitComponentInteractions(
       filter: CollectorFilter<[ComponentInteraction]>,
       options?: AwaitComponentInteractionsOptions,
-    ): Promise<Collection<Snowflake, MessageReaction>>;
+    ): Promise<Collection<Snowflake, ComponentInteraction>>;
     public createReactionCollector(
       filter: CollectorFilter<[MessageReaction, User]>,
       options?: ReactionCollectorOptions,
