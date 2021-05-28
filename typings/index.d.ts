@@ -273,12 +273,8 @@ declare module 'discord.js' {
     public type: MessageComponentType | null;
     public setType(type: MessageComponentTypeResolvable): this;
     private static create(data: MessageComponentOptions): MessageComponent;
-    public static resolveType(type: MessageComponentTypeResolvable): MessageComponentType;
+    private static resolveType(type: MessageComponentTypeResolvable): MessageComponentType;
     private static transform(component: MessageComponentResolvable): object;
-  }
-
-  interface BaseMessageComponentOptions {
-    type?: MessageComponentType | MessageComponentTypes;
   }
 
   class BroadcastDispatcher extends VolumeMixin(StreamDispatcher) {
@@ -1239,7 +1235,6 @@ declare module 'discord.js' {
     constructor(data?: MessageActionRow | MessageActionRowOptions);
     public type: 'ACTION_ROW';
     public components: MessageComponent[];
-    public addComponent(component: MessageComponentOptions): this;
     public addComponents(...components: MessageComponentOptions[] | MessageComponentOptions[][]): this;
     public toJSON(): object;
   }
@@ -1340,6 +1335,7 @@ declare module 'discord.js' {
     public readonly endReason: string | null;
     public options: MessageComponentInteractionCollectorOptions;
     public total: number;
+    public users: Collection<Snowflake, User>;
 
     public collect(interaction: Interaction): Snowflake;
     public dispose(interaction: Interaction): Snowflake;
@@ -2668,6 +2664,10 @@ declare module 'discord.js' {
   type Base64Resolvable = Buffer | Base64String;
 
   type Base64String = string;
+
+  interface BaseMessageComponentOptions {
+    type?: MessageComponentType | MessageComponentTypes;
+  }
 
   type BitFieldResolvable<T extends string, N extends number | bigint> =
     | RecursiveReadonlyArray<T | N | Readonly<BitField<T, N>>>
