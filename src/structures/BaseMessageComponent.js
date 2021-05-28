@@ -18,12 +18,12 @@ class BaseMessageComponent {
    * Data that can be resolved into options for a MessageComponent. This can be:
    * * MessageActionRowOptions
    * * MessageButtonOptions
-   * @typedef {MessageActionRowOptions|MessageButtonOptions} MessageComponentOptions
+   * @typedef {MessageActionRowOptions|MessageButtonOptions|MessageSelectMenuOptions} MessageComponentOptions
    */
 
   /**
    * Components that can be sent in a message
-   * @typedef {MessageActionRow|MessageButton} MessageComponent
+   * @typedef {MessageActionRow|MessageButton|MessageSelectMenu} MessageComponent
    */
 
   /**
@@ -86,6 +86,11 @@ class BaseMessageComponent {
       case MessageComponentTypes.BUTTON: {
         const MessageButton = require('./MessageButton');
         component = new MessageButton(data);
+        break;
+      }
+      case MessageComponentTypes.SELECT_MENU: {
+        const MessageSelectMenu = require('./MessageSelectMenu');
+        component = new MessageSelectMenu(data);
         break;
       }
       default:
