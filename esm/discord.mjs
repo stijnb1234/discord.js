@@ -89,6 +89,7 @@ export const {
   MessageEmbed,
   MessageMentions,
   MessageReaction,
+  MessageSelectMenu,
   NewsChannel,
   PermissionOverwrites,
   Presence,
