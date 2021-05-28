@@ -3310,7 +3310,7 @@ declare module 'discord.js' {
   interface MessageButtonOptions extends BaseMessageComponentOptions {
     customID?: string;
     disabled?: boolean;
-    emoji?: RawEmoji;
+    emoji?: GuildEmoji | RawEmoji;
     label?: string;
     style: MessageButtonStyleResolvable;
     url?: string;
@@ -3474,7 +3474,7 @@ declare module 'discord.js' {
   interface MessageSelectOption {
     default?: boolean;
     description?: string;
-    emoji?: RawEmoji;
+    emoji?: Emoji | RawEmoji;
     label: string;
     value: string;
   }
