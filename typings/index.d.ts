@@ -1241,6 +1241,7 @@ declare module 'discord.js' {
     public components: MessageComponent[];
     public addComponent(component: MessageComponentOptions): this;
     public addComponents(...components: MessageComponentOptions[] | MessageComponentOptions[][]): this;
+    public toJSON(): object;
   }
 
   export class MessageAttachment {
@@ -1277,6 +1278,7 @@ declare module 'discord.js' {
     public setStyle(style: MessageButtonStyleResolvable): this;
     public setURL(url: string): this;
     private static resolveStyle(style: MessageButtonStyleResolvable): MessageButtonStyle;
+    public toJSON(): object;
   }
 
   export class MessageCollector extends Collector<Snowflake, Message> {
